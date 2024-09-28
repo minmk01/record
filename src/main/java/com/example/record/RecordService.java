@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-
 public class RecordService {
 
     private final RecordRepository recordRepository;
@@ -19,14 +18,14 @@ public class RecordService {
         return recordRepository.save(record);
     }
 
+    public Optional<Record> readRecord(int id) {
+        return recordRepository.findById(id);
+    }
+
 //    @Transactional
 //    public int updateRecord(int id, RecordRequestDTO recordRequestDTO) {
 //        Optional<Record> record = recordRepository.findById(id);
 //        return record;
 //    }
-
-    public Optional<Record> readRecord(int id) {
-        return recordRepository.findById(id);
-    }
 
 }
