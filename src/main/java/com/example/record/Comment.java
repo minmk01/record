@@ -12,21 +12,21 @@ public class Comment extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column
-    private String contents;
-
-    @Column
+    @Column(nullable = false)
     private Long authorId;
 
-    @Column
+    @Column(nullable = false)
     private Long recordId;
 
+    @Column(nullable = false)
+    private String contents;
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "authorId")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "record_id")
+    @JoinColumn(name = "recordId")
     private Record record;
 
 }

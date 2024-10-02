@@ -1,6 +1,5 @@
 package com.example.record;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
 import lombok.experimental.SuperBuilder;
 
@@ -11,17 +10,17 @@ public class SelfInterview extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column
-    private String question;
-
-    @Column
-    private String answer;
-
-    @Column
+    @Column(nullable = false)
     private Long authorId;
 
+    @Column(nullable = false)
+    private String question;
+
+    @Column(nullable = false)
+    private String answer;
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "authorId")
     private User user;
-    
+
 }

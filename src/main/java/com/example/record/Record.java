@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -21,7 +19,7 @@ public class Record extends BaseEntity{
     private Long id;
 
     @Column(nullable = false)
-    private String authorId;
+    private Long authorId;
 
     @Column(nullable = false)
     private String feeling;
@@ -43,11 +41,11 @@ public class Record extends BaseEntity{
     private List<String> comments;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "authorId")
     private User user;
 
     @Builder
-    public Record(String feeling, String contents, String oneSentence, LocalDateTime updatedDate) {
+    public Record(String feeling, String contents, String oneSentence) {
         this.feeling = feeling;
         this.contents = contents;
         this.oneSentence = oneSentence;
