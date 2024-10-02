@@ -18,7 +18,7 @@ public class RecordService {
         return recordRepository.save(record);
     }
 
-    public Optional<Record> readRecord(int id) {
+    public Optional<Record> getRecord(Long id) {
         return recordRepository.findById(id);
     }
 
