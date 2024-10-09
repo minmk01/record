@@ -5,20 +5,9 @@ import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
 @Entity
-@Table(name = "comment")
-public class Comment extends BaseEntity{
+@Table
+public class Comment extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-
-    @Column(nullable = false)
-    private Long authorId;
-
-    @Column(nullable = false)
-    private Long recordId;
-
-    @Column(nullable = false)
     private String contents;
 
     @ManyToOne

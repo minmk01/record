@@ -5,40 +5,25 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "record")
-public class Record extends BaseEntity{
+@Table
+public class Record extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-
-    @Column(nullable = false)
-    private Long authorId;
-
-    @Column(nullable = false)
     private String feeling;
 
-    @Column(nullable = false)
     private String contents;
 
-    @Column(nullable = false)
     private String oneSentence;
 
-    @Column(columnDefinition = "boolean default false")
     private Boolean isShared;
 
-    private Integer like;
+    private Integer likes;
 
     private Integer cheerUp;
-
-    @Convert(converter = StringListConverter.class)
-    private List<String> comments;
 
     @ManyToOne
     @JoinColumn(name = "authorId")
@@ -58,6 +43,7 @@ public class Record extends BaseEntity{
                 .oneSentence(recordRequestDTO.getOneSentence())
                 .build();
     }
+
 }
 
 
