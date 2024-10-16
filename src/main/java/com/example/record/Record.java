@@ -44,6 +44,18 @@ public class Record extends BaseEntity {
                 .build();
     }
 
+    public void changeFeeling(String changedFeeling) {
+        this.feeling = changedFeeling;
+    }
+
+    public void changeContents(String changedContents) {
+        this.contents = changedContents;
+    }
+
+    public void changeOneSentence(String changedOneSentence) {
+        this.oneSentence = changedOneSentence;
+    }
+
 }
 
 

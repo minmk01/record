@@ -3,13 +3,11 @@ package com.example.record;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
 @Getter
 public class RecordResponseDTO {
-
     private final String feeling;
     private final String contents;
     private final String oneSentence;
