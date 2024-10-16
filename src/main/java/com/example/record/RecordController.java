@@ -1,12 +1,9 @@
 package com.example.record;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,16 +20,27 @@ public class RecordController {
         return RecordResponseDTO.toDTO(savedRecord);
     }
 
-    //일기 기록 가져오기
+    //모든 일기 조회
+    @GetMapping
+    public List<RecordResponseDTO> getAllRecords() {
+        return recordService.getAllRecords();
+    }
+
+    //특정 일기 조회
     @GetMapping("/{id}")
-    public Optional<Record> getRecord(@PathVariable Long id) {
+    public RecordResponseDTO getRecord(@PathVariable Long id) {
         return recordService.getRecord(id);
     }
 
-    //일기 수정하기
-//    @PutMapping("/{id}")
-//    public int update(@PathVariable int id, @RequestBody RecordRequestDTO recordRequestDTO) {
-//        return recordService.updateRecord(id, recordRequestDTO);
-//    }
+    //일기 수정
+    @PutMapping("/{id}")
+    public RecordResponseDTO updateRecord(@PathVariable Long id, @RequestBody RecordRequestDTO recordRequestDTO) {
+        return recordService.updateRecord(id, recordRequestDTO);
+    }
 
+    //일기 삭제
+    @DeleteMapping("/{id}")
+    public void deleteRecord(@PathVariable Long id) {
+        recordService.deleteRecord(id);
+    }
 }
